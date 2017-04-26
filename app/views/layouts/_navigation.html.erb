@@ -21,16 +21,28 @@
           NSR
         </div>
       </li>
-      <li class="<%= 'active' if current_page?('/') %>">
-        <%= link_to '/' do %>
-            <i class="fa fa-laptop"></i> <span class="nav-label">Main page</span>
-        <% end %>
-      </li>
-      <li class="<%= 'active' if current_page?('/home/minor') %>">
-        <%= link_to '/home/minor' do %>
-            <i class="fa fa-desktop"></i> <span class="nav-label">Minor page</span>
-        <% end %>
-      </li>
+      <% if current_user %>
+          <li class="<%= 'active' if current_page?('/') %>">
+            <%= link_to '/' do %>
+                <i class="fa fa-laptop"></i> <span class="nav-label">Main page</span>
+            <% end %>
+          </li>
+          <li class="<%= 'active' if current_page?('/home/minor') %>">
+            <%= link_to '/home/minor' do %>
+                <i class="fa fa-desktop"></i> <span class="nav-label">Minor page</span>
+            <% end %>
+          </li>
+          <li>
+            <a href="">
+              <i class="fa fa-calendar"></i> <span class="nav-label">Calendar</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <i class="fa fa-envelope"></i> <span class="nav-label">Send Notification</span>
+            </a>
+          </li>
+      <% end %>
     </ul>
 
   </div>
