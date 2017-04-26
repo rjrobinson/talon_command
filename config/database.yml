@@ -1,0 +1,21 @@
+---
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: talon_command_dev
+
+test:
+  <<: *default
+  database: talon_command_test
+
+production:
+  <<: *default
+  database: talon_command_production
+  username: postgres
+  password: <%= ENV['SC_DATABASE_PASSWORD'] %>
