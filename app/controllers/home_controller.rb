@@ -6,4 +6,8 @@ class HomeController < ApplicationController
 
   def minor
   end
+
+  def home
+    render layout: 'empty'
+  end
 end
