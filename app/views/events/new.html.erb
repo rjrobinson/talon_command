@@ -1,0 +1,7 @@
+<%= simple_form_for @event do |f| %>
+    <%= f.input :name, required: false, autofocus: true,
+                input_html: {class: 'form-control'}, placeholder: 'Event Name',
+                label: false
+    %>
+    <%= f.button :submit, 'Add Event', class: 'btn btn-primary block full-width m-b' %>
+<% end %>
