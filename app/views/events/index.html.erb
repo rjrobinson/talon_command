@@ -10,23 +10,23 @@
       <th>Location</th>
       <th>Starting</th>
       <th>Ending</th>
-      <th>Force Strength</th>
-      <th></th>
-      <th>Created By</th>
+      <th class="text-center">Force Strength</th>
+      <th class="center"></th>
+      <th class="text-right">Created By</th>
     </tr>
     </thead>
     <tbody>
     <% @events.each do |event| %>
         <tr class="gradeX">
-          <td><%= event.name %></td>
+          <td class="text-success"><%= event.name %></td>
           <td><%= event.location %></td>
-          <td><%= event.start %></td>
-          <td><%= event.end %></td>
-          <td><%= event.total_needed %></td>
-          <td class="center">
-            <button class="btn btn-xs">Sign Up</button>
+          <td class="text-right"><%= event.start.to_s(:long) %></td>
+          <td class="text-right"><%= event.end.to_s(:long) %></td>
+          <td class="text-center">0 / <%= event.total_needed %> - <a href="">roster</a></td>
+          <td class="text-center">
+            <button class="btn btn-xs btn-success">Sign Up</button>
           </td>
-          <td><%= event.user.display_name %></td>
+          <td class="text-right"><%= event.user.display_name %></td>
         </tr>
     <% end %>
     </table>
