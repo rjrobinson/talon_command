@@ -12,6 +12,7 @@ module ApplicationHelper
     flash.each do |type, message|
       type = 'success' if type == 'notice'
       type = 'error' if type == 'alert'
+      type = 'success'
       text = "<script>toastr.#{type}('#{message}');</script>"
       flash_messages << text.html_safe if message
     end
