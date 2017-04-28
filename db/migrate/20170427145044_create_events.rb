@@ -7,6 +7,8 @@ class CreateEvents < ActiveRecord::Migration[5.0]
       t.datetime :end
       t.integer :total_needed
 
+      t.references :user
+
       t.timestamps
     end
   end

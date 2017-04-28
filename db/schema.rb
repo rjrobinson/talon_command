@@ -21,8 +21,10 @@ ActiveRecord::Schema.define(version: 20170427145044) do
     t.datetime "start"
     t.datetime "end"
     t.integer  "total_needed"
+    t.integer  "user_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|

@@ -12,6 +12,7 @@
       <th>Ending</th>
       <th>Force Strength</th>
       <th></th>
+      <th>Created By</th>
     </tr>
     </thead>
     <tbody>
@@ -25,6 +26,7 @@
           <td class="center">
             <button class="btn btn-xs">Sign Up</button>
           </td>
+          <td><%= event.user.display_name %></td>
         </tr>
     <% end %>
     </table>
