@@ -8,8 +8,8 @@
     <tr>
       <th>Event</th>
       <th>Location</th>
-      <th>Starting</th>
-      <th>Ending</th>
+      <th class="text-right">Starting</th>
+      <th class="text-left">Ending</th>
       <th class="text-center">Force Strength</th>
       <th class="center"></th>
       <th class="text-right">Created By</th>
@@ -19,12 +19,12 @@
     <% @events.each do |event| %>
         <tr class="gradeX">
           <td class="text-success"><%= event.name %></td>
-          <td><%= event.location %></td>
+          <td><i class="fa fa-ship"></i> <%= event.location %></td>
           <td class="text-right"><%= event.start.to_s(:long) %></td>
-          <td class="text-right"><%= event.end.to_s(:long) %></td>
+          <td class="text-left"><%= event.end.to_s(:long) %></td>
           <td class="text-center">0 / <%= event.total_needed %> - <a href="">roster</a></td>
           <td class="text-center">
-            <button class="btn btn-xs btn-success">Sign Up</button>
+            <%= button_to 'Sign Up', event_add_to_roster_path(user_id: current_user.id, event_id: event.id), class: 'btn btn-xs btn-success' %>
           </td>
           <td class="text-right"><%= event.user.display_name %></td>
         </tr>

@@ -4,7 +4,10 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  resources :events, only: [:index, :new, :create]
+  resources :events, only: [:index, :new, :create] do
+    post :add_to_roster
+    post :remove_from_roster
+  end
 
   get '/home', to: 'home#home', as: :home
 end
