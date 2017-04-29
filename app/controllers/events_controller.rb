@@ -19,26 +19,6 @@ class EventsController < ApplicationController
     end
   end
 
-
-  def add_to_roster
-    @user = User.find(params[:user_id])
-    @event = Event.find(params[:event_id])
-    @roster = EventRoster.new(event: @event, user: @user)
-    if @roster.save
-      redirect_to events_path, flash: {notice: 'You have been added to the roster'}
-    else
-      redirect_to events_path, flash: {error: "#{@roster.errors.first[1]}"}
-    end
-
-  end
-
-  def remove_from_roster
-    @user = User.find(params[:user_id])
-    @event = Event.find(params[:event_id])
-    EventRoster.where(event: @event, user: @user).first.delete
-    redirect_to events_path, flash: {notice: 'You have been added to the roster, Command Notified'}
-  end
-
   private
 
   def event_params

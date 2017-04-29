@@ -8,7 +8,7 @@ class EventRoster < ApplicationRecord
   private
 
   def not_on_roster
-    if self.where(user_id: user_id).where(event_id: event_id).present?
+    if EventRoster.where(user_id: user_id).where(event_id: event_id).present?
       errors.add(:uniqueness, 'You are already a member of this roster')
     end
   end
