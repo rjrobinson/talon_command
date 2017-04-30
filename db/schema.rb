@@ -18,8 +18,11 @@ ActiveRecord::Schema.define(version: 20170428194629) do
   create_table "event_rosters", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "event_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "status"
+    t.boolean  "approved"
+    t.string   "approved_by"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["event_id"], name: "index_event_rosters_on_event_id", using: :btree
     t.index ["user_id"], name: "index_event_rosters_on_user_id", using: :btree
   end

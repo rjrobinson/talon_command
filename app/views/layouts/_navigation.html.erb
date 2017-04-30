@@ -24,7 +24,7 @@
       <% if current_user %>
           <li class="<%= 'active' if current_page?('/') %>">
             <%= link_to '/' do %>
-                <i class="fa fa-laptop"></i> <span class="nav-label">Main page</span>
+                <i class="fa fa-home"></i> <span class="nav-label">Dashboard</span>
             <% end %>
           </li>
           <li class="<%= 'active' if current_page?('/home/minor') %>">

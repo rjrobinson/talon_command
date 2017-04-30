@@ -4,6 +4,11 @@ class CreateEventRosters < ActiveRecord::Migration[5.0]
       t.references :user, foreign_key: true
       t.references :event, foreign_key: true
 
+      t.string :status
+
+      t.boolean :approved
+      t.string :approved_by
+
       t.timestamps
     end
   end

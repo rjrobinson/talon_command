@@ -1,4 +1,4 @@
-<div class="wrapper wrapper-content animated fadeInRight">
+<div class="wrapper wrapper-content">
   <%= link_to new_event_path, class: 'btn btn-primary pull-right' do %>
       <i class="fa fa-plus"></i> Add New Event
   <% end %>
@@ -22,9 +22,23 @@
           <td><i class="fa fa-ship"></i> <%= event.location %></td>
           <td class="text-right"><%= event.start.to_s(:long) %></td>
           <td class="text-left"><%= event.end.to_s(:long) %></td>
-          <td class="text-center">0 / <%= event.total_needed %> - <a href="">roster</a></td>
           <td class="text-center">
-            <%= button_to 'Sign Up', event_rosters_path(user_id: current_user.id, event_id: event.id), class: 'btn btn-xs btn-success' %>
+            <%= event.approved.count %>/ <%= event.total_needed %>
+            <% if event.event_rosters.count > 0 %>
+                <br>
+                <span>
+              <small>
+              <%= "#{event.event_rosters.pending.count} pending" %>
+            </small>
+            </span>
+            <% end %>
+          </td>
+          <td class="text-center">
+            <% unless event.users.include?(current_user) %>
+                <%= button_to 'Sign Up', event_rosters_path(user_id: current_user.id, event_id: event.id), class: 'btn btn-xs btn-success' %>
+            <% else %>
+                <%= button_to 'Remove', event_rosters_path(user_id: current_user.id, event_id: event.id), method: :delete, class: 'btn btn-xs btn-danger' %>
+            <% end %>
           </td>
           <td class="text-right"><%= event.user.display_name %></td>
         </tr>

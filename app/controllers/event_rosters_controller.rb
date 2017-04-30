@@ -4,7 +4,7 @@ class EventRostersController < ApplicationController
     @roster = EventRoster.new(roster_params)
 
     if @roster.save
-      redirect_to events_path, flash: {notice: 'You have been added to the roster'}
+      redirect_to events_path, flash: {notice: 'Your request has been submitted to be added'}
     else
       redirect_to events_path, flash: {error: "#{@roster.errors.first[1]}"}
     end
@@ -15,13 +15,13 @@ class EventRostersController < ApplicationController
     @event = Event.find(params[:event_id])
     EventRoster.where(event: @event, user: @user).first.delete
 
-    redirect_to events_path, flash: {notice: 'You have been added to the roster, Command Notified'}
+    redirect_to events_path, flash: {error: 'Your request has been submitted for removal'}
   end
 
   private
 
   def roster_params
-    params.permit(:user_id, :event_id)
+    params.permit(:user_id, :event_id).merge(status: 'pending')
   end
 
 end

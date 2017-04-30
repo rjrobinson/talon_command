@@ -6,6 +6,6 @@ Rails.application.routes.draw do
 
   resources :events, only: [:index, :new, :create]
 
-  resources :event_rosters, only: [:create, :destroy]
+  resource :event_rosters, only: [:create, :destroy]
   get '/home', to: 'home#home', as: :home
 end

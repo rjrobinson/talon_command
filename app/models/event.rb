@@ -12,4 +12,12 @@ class Event < ApplicationRecord
   validates :location, presence: true
 
 
+  def approved
+    self.event_rosters.approved
+  end
+
+
+  def pending
+    self.event_rosters.pending
+  end
 end

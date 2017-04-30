@@ -5,6 +5,11 @@ class EventRoster < ApplicationRecord
 
   validate :not_on_roster
 
+
+  scope :approved, -> {where(approved: true)}
+  scope :pending, -> {where(status: 'pending')}
+
+
   private
 
   def not_on_roster
