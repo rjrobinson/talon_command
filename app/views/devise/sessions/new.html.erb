@@ -1,11 +1,11 @@
 <div class="middle-box text-center loginscreen  animated fadeInDown">
   <div>
     <div>
-      <h1 class="logo-name">NSR</h1>
+      <%= image_tag 'nsrpng.png', class: 'nsr-logo' %>
     </div>
 
     <h2>Talon Command</h2>
-    <!--<h3>Non Standard Response Solutions LLC</h3>-->
+    <br>
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-group">
           <%= f.input :email, required: false, autofocus: true,
