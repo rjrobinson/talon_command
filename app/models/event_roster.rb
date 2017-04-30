@@ -3,12 +3,18 @@ class EventRoster < ApplicationRecord
   belongs_to :user
   belongs_to :event
 
-  validate :not_on_roster
+  validate :not_on_roster, on: :create
 
+  validates :user_id, presence: true
+  validates :event_id, presence: true
 
-  scope :approved, -> {where(approved: true)}
+  scope :approved, -> {where(status: 'approved')}
   scope :pending, -> {where(status: 'pending')}
+  scope :denied, -> {where(status: 'denied')}
 
+  def approved_by_user
+    User.find(approved_by).display_name
+  end
 
   private
 

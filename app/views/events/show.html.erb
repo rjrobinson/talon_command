@@ -1,0 +1,138 @@
+<h1>Event Details</h1>
+<br>
+Location <%= @event.name %>
+<br>
+Starting <%= @event.start.to_s(:long) %>
+<br>
+Ending <%= @event.end.to_s(:long) %>
+<br>
+<%= link_to new_event_path, class: 'btn btn-info btn-xs' do %>
+    <i class="fa fa-edit"></i> Edit Info
+<% end %>
+
+
+<div class="wrapper wrapper-content">
+  <%= link_to new_event_path, class: 'btn btn-success pull-right' do %>
+      <i class="fa fa-envelope"></i> Send Notification
+  <% end %>
+  <span> </span>
+  <%= link_to new_event_path, class: 'btn btn-info pull-right' do %>
+      <i class="fa fa-print"></i> Print Roster
+  <% end %>
+  <h1 class="title">Current </h1>
+  <table class="table table-striped table-bordered table-hover dataTables-example">
+    <thead>
+    <tr class="success">
+      <th>Name</th>
+      <th>Status</th>
+      <th class="text-center">Options</th>
+      <th>Approved By</th>
+    </tr>
+    </thead>
+    <% if @event.approved.any? %>
+        <% @event.approved.each do |request| %>
+            <tr>
+              <td><%= request.user.display_name %></td>
+              <td><%= request.status %></td>
+              <td class="text-center">
+                <%= button_to 'Deny',
+                              event_rosters_path(event_roster_id: request.id, status: 'denied'),
+                              method: :patch,
+                              class: 'btn btn-danger btn-xs'
+                %>
+              </td>
+              <td><%= request.approved_by_user %></td>
+            </tr>
+        <% end %>
+    <% else %>
+        <tr>
+          <td class="alert-danger"></td>
+          <td class="alert-danger"><h3 class="text-red text-center">No Approved Requests</h3></td>
+          <td class="alert-danger"></td>
+          <td class="alert-danger"></td>
+        </tr>
+    <% end %>
+    <tbody>
+  </table>
+</div>
+
+<div class="wrapper wrapper-content">
+  <h1 class="title">Pending</h1>
+  <table class="table table-striped table-bordered table-hover dataTables-example">
+    <thead>
+    <tr class="info">
+      <th>Name</th>
+      <th>Status</th>
+      <th class="text-center">Options</th>
+      <th>Requested At</th>
+    </tr>
+    </thead>
+    <% if @event.pending.any? %>
+        <% @event.pending.each do |request| %>
+            <tr>
+              <td><%= request.user.display_name %></td>
+              <td><%= request.status %></td>
+              <td class="text-center">
+                <%= button_to 'Approve',
+                              event_rosters_path(event_roster_id: request.id, status: 'approved'),
+                              method: :patch,
+                              class: 'btn btn-success btn-xs pull-left'
+                %>
+                <%= button_to 'Deny',
+                              event_rosters_path(event_roster_id: request.id, status: 'denied'),
+                              method: :patch,
+                              class: 'btn btn-danger btn-xs pull-right'
+                %>
+              </td>
+              <td>Some Time</td>
+            </tr>
+        <% end %>
+    <% else %>
+        <tr>
+          <td></td>
+          <td><h3 class="text-center">No Pending Requests</h3></td>
+          <td></td>
+          <td></td>
+        </tr>
+    <% end %>
+    <tbody>
+  </table>
+</div>
+
+<div class="wrapper wrapper-content">
+  <h1 class="title">Denied</h1>
+  <table class="table table-striped table-bordered table-hover dataTables-example">
+    <thead>
+    <tr class="danger">
+      <th>Name</th>
+      <th>Status</th>
+      <th class="text-center">Options</th>
+      <th>Denied By</th>
+    </tr>
+    </thead>
+    <% if @event.denied.any? %>
+        <% @event.denied.each do |request| %>
+            <tr>
+              <td><%= request.user.display_name %></td>
+              <td><%= request.status %></td>
+              <td class="text-center">
+                <%= button_to 'Approve',
+                              event_rosters_path(event_roster_id: request.id, status: 'approved'),
+                              method: :patch,
+                              class: 'btn btn-success btn-xs'
+                %>
+              </td>
+              <td><%= request.approved_by_user %></td>
+            </tr>
+        <% end %>
+    <% else %>
+        <tr>
+          <td class="alert-danger"></td>
+          <td class="alert-danger"><h3 class="text-center">No Denied Requests</h3></td>
+          <td class="alert-danger"></td>
+          <td class="alert-danger"></td>
+        </tr>
+    <% end %>
+    <tbody>
+  </table>
+</div>

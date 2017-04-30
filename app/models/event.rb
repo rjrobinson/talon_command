@@ -12,6 +12,7 @@ class Event < ApplicationRecord
   validates :location, presence: true
 
 
-  delegate :approved, :pending, to: :event_rosters
+  delegate :approved, :pending, :denied, :approved_by_user, to: :event_rosters
+
 
 end
