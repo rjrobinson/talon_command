@@ -2,7 +2,7 @@ class Event < ApplicationRecord
 
   belongs_to :user
 
-  has_many :event_rosters
+  has_many :event_rosters, dependent: :destroy
   has_many :users, through: :event_rosters
 
   validates :name, presence: true
@@ -12,12 +12,6 @@ class Event < ApplicationRecord
   validates :location, presence: true
 
 
-  def approved
-    self.event_rosters.approved
-  end
+  delegate :approved, :pending, to: :event_rosters
 
-
-  def pending
-    self.event_rosters.pending
-  end
 end
