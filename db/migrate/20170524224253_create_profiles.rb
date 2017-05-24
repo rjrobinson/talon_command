@@ -16,6 +16,7 @@ class CreateProfiles < ActiveRecord::Migration[5.0]
       t.string :cert_state
 
       t.string :role
+      t.string :call_sign
 
       t.string :emergency_name
       t.string :emergency_number

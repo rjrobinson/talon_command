@@ -24,27 +24,27 @@
       <% if current_user %>
           <li class="<%= 'active' if current_page?('/') %>">
             <%= link_to '/' do %>
-                <i class="fa fa-home"></i> <span class="nav-label">Dashboard</span>
+                <i class="fa fa-home"></i> <span class="nav-label"> Dashboard</span>
             <% end %>
           </li>
           <li class="<%= 'active' if current_page?('/home/minor') %>">
             <%= link_to '/home/minor' do %>
-                <i class="fa fa-modx"></i> <span class="nav-label"> Events</span>
+                <i class="fa fa-modx"></i> <span class="nav-label"> events</span>
             <% end %>
           </li>
           <li>
             <a href="">
-              <i class="fa fa-calendar"></i> <span class="nav-label">Calendar</span>
+              <i class="fa fa-calendar"></i> <span class="nav-label"> Calendar</span>
             </a>
           </li>
           <li>
             <a href="">
-              <i class="fa fa-book"></i> <span class="nav-label">Send Notification</span>
+              <i class="fa fa-book"></i> <span class="nav-label"> Send Notification</span>
             </a>
           </li>
           <li>
             <a href="">
-              <i class="fa fa-cogs"></i> <span class="nav-label">Settings</span>
+              <i class="fa fa-cog"></i> <span class="nav-label"> Admin Settings</span>
             </a>
           </li>
       <% end %>

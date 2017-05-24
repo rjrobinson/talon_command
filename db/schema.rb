@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20170524224253) do
     t.string   "certification"
     t.string   "cert_state"
     t.string   "role"
+    t.string   "call_sign"
     t.string   "emergency_name"
     t.string   "emergency_number"
     t.datetime "created_at",       null: false
