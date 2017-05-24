@@ -3,9 +3,12 @@
     <div class="col-lg-12">
       <div class="text-center m-t-lg">
         <h1>
-          <%= link_to 'Upcoming Events', events_path, class: 'btn btn-lg btn-danger' %>
-          <button class="btn btn-lg btn-info">Upcoming Classes</button>
-          <button class="btn btn-lg btn-danger">My Schedule</button>
+          <%= link_to events_path, class: 'btn btn-lg btn-danger' do %>
+              <i class="fa fa-modx"></i> Events
+          <% end %>
+          <button class="btn btn-lg btn-info"><i class="fa fa-book"></i> Classes</button>
+          <button class="btn btn-lg btn-danger"><i class="fa fa-calendar"></i> Schedule</button>
+          <button class="btn btn-lg btn-danger"><i class="fa fa-cogs"></i> Settings</button>
         </h1>
       </div>
     </div>
