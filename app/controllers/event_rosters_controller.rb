@@ -30,6 +30,7 @@ class EventRostersController < ApplicationController
   private
 
   def roster_params
+    binding.pry
     status = params[:status] || 'pending'
     params.permit(:user_id, :event_id, :status).merge(status: status, approved_by: current_user.id)
   end

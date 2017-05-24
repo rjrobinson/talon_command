@@ -22,6 +22,8 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @users = User.all
+    @event_roster = EventRoster.new
   end
 
   private
