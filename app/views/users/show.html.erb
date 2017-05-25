@@ -1,0 +1,132 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2><%= @profile.user.display_name %></h2>
+  </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Demographic Information</h5>
+          <div class="ibox-tools">
+            <a class="collapse-link">
+              <i class="fa fa-chevron-up"></i>
+            </a>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <i class="fa fa-wrench"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-user">
+              <li><a href="#">Config option 1</a>
+              </li>
+              <li><a href="#">Config option 2</a>
+              </li>
+            </ul>
+            <a class="close-link">
+              <i class="fa fa-times"></i>
+            </a>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <%= simple_form_for @user do |f| %>
+              <legend><i class="fa fa-user"></i> Name</legend>
+              <div class="form-group"><label class="col-sm-2 control-label"> Name</label>
+                <div class="col-sm-4">
+                  <%= f.input :first_name, class: 'form-control', label: false, placeholder: (@user.first_name || 'First Name') %>
+                </div>
+                <div class="col-sm-4">
+                  <%= f.input :last_name, class: 'form-control', label: false, placeholder: (@user.last_name || 'Last Name') %>
+                </div>
+                <%= f.submit 'Update Name', class: 'btn btn-info' %>
+              </div>
+              <legend><i class="fa fa-envelope"></i> E-Mail</legend>
+              <div class="form-group"><label class="col-sm-2 control-label">E-Mail</label>
+                <div class="col-sm-8">
+                  <%= f.input :email, class: 'form-control', label: false, placeholder: @user.email %>
+                </div>
+                <%= f.submit 'Update E-Mail', class: 'btn btn-info' %>
+              </div>
+          <% end %>
+          <%= simple_form_for :profile do |f| %>
+              <legend><i class="fa fa-phone"></i> Phone</legend>
+              <div class="form-group"><label class="col-sm-2 control-label">Mobile</label>
+                <div class="col-sm-8">
+                  <%= f.input :phone, class: 'form-control', label: false, placeholder: (@profile.phone || '7325551234 - Numbers only') %>
+                </div>
+                <%= f.submit 'Update Phone Number', class: 'btn btn-success' %>
+              </div>
+              <!-- Form Name -->
+              <legend><i class="fa fa-home"></i> Address</legend>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="textinput"> Street</label>
+                <div class="col-sm-10">
+                  <%= f.input :address, class: 'form-control', label: false, placeholder: (@profile.address || '123 Any Street USA') %>
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="textinput">City</label>
+                <div class="col-sm-10">
+                  <%= f.input :city, class: 'form-control', label: false, placeholder: (@profile.city || 'Anytown') %>
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="textinput">State</label>
+                <div class="col-sm-4">
+                  <%= f.input :state, class: 'form-control', label: false, collection: ['NY', 'NJ', 'PA'], selected: @profile.state %>
+                </div>
+
+                <label class="col-sm-2 control-label" for="textinput">Postcode</label>
+                <div class="col-sm-4">
+                  <%= f.input :zipcode, class: 'form-control', label: false %>
+                </div>
+              </div>
+
+              <legend><i class="fa fa-ambulance"></i> Certification</legend>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="textinput"> Certification</label>
+                <div class="col-sm-4">
+                  <%= f.input :certification, class: 'form-control', label: false, collection: ['EMT', 'Paramedic', 'RN'] %>
+                </div>
+
+                <label class="col-sm-2 control-label" for="textinput"> State</label>
+                <div class="col-sm-4">
+                  <%= f.input :cert_state, class: 'form-control', label: false, collection: ['NY', 'NJ', 'PA'] %>
+                </div>
+              </div>
+
+              <legend><i class="fa fa-cogs"></i> Admins Only</legend>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="textinput"> Role</label>
+                <div class="col-sm-4">
+                  <%= f.input :role, collection: ['Primary', 'Secondary', 'FNG'], class: 'form-control', label: false %>
+                </div>
+
+                <label class="col-sm-2 control-label" for="textinput"> Call Sign</label>
+                <div class="col-sm-4">
+                  <%= f.input :call_sign, class: 'form-control', label: false %>
+                </div>
+              </div>
+
+              <legend class="danger"><i class="fa fa-volume-control-phone text-red"></i> Emergency Contact</legend>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="textinput"> Name</label>
+                <div class="col-sm-4">
+                  <%= f.input :emergency_name, class: 'form-control', label: false %>
+                </div>
+
+                <label class="col-sm-2 control-label" for="textinput"> Phone Number</label>
+                <div class="col-sm-4">
+                  <%= f.input :emergency_number, class: 'form-control', label: false %>
+                </div>
+              </div>
+
+              <%= f.submit 'Save', class: 'btn btn-success' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>

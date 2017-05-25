@@ -9,7 +9,8 @@ class User < ApplicationRecord
   has_one :profile
 
   def display_name
-    email
+    return email if first_name.nil?
+    first_name + ' ' + last_name
   end
 
   def create_profile

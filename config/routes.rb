@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 
   resource :event_rosters, only: [:create, :destroy, :update]
 
-  get '/home', to: 'home#home', as: :home
+
+  resources :users, only: [:show, :update]
+
+  # get '/home', to: 'home#home', as: :home
 
 end

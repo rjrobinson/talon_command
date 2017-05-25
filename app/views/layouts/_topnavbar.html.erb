@@ -10,7 +10,9 @@
     </div>
     <ul class="nav navbar-top-links navbar-right">
       <li>
-        <a><i class="fa fa-cogs"></i> Settings</a>
+        <%= link_to user_path(current_user) do %>
+            <i class="fa fa-cogs"></i> Settings
+        <% end %>
       </li>
       <li>
         <% if current_user %>
