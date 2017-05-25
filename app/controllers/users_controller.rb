@@ -26,12 +26,12 @@ class UsersController < ApplicationController
   def ensure_profile_exists
     user = User.find(params[:id])
     if user && user.profile.nil?
-      Profile.create(user_id: current_user.id)
+      Profile.create(user_id: user.id)
     end
   end
 
   def user_params
-    params[:admin] = false if params[:admin] == '0'
+    params[:admin] = true if params[:admin] == '1' && current_user.admin?
     params.require(:user).permit(
         :first_name,
         :last_name,
