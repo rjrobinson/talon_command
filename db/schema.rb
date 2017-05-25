@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170428194629) do
+ActiveRecord::Schema.define(version: 20170525205618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,33 @@ ActiveRecord::Schema.define(version: 20170428194629) do
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "phone"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zipcode"
+    t.string   "certification"
+    t.string   "cert_state"
+    t.string   "role"
+    t.string   "call_sign"
+    t.string   "emergency_name"
+    t.string   "emergency_number"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
+  end
+
+  create_table "sms_notifications", force: :cascade do |t|
+    t.string   "to"
+    t.string   "from"
+    t.string   "body"
+    t.boolean  "sent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -54,6 +81,7 @@ ActiveRecord::Schema.define(version: 20170428194629) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.boolean  "admin"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

@@ -6,7 +6,16 @@ class User < ApplicationRecord
   has_many :event_rosters
   has_many :events, through: :event_rosters
 
+  has_one :profile
+
+  delegate :phone, to: :profile
+
   def display_name
-    email
+    return email if first_name.nil?
+    first_name + ' ' + last_name
+  end
+
+  def create_profile
+    Profile.create(user_id: id) if profile.nil?
   end
 end

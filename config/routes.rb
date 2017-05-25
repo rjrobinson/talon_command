@@ -7,5 +7,10 @@ Rails.application.routes.draw do
   resources :events, only: [:index, :new, :create, :show]
 
   resource :event_rosters, only: [:create, :destroy, :update]
-  get '/home', to: 'home#home', as: :home
+
+
+  resources :users, only: [:index, :show, :update]
+  resources :profiles, only: [:update]
+
+
 end

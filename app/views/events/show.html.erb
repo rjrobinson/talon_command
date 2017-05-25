@@ -10,6 +10,12 @@ Ending <%= @event.end.to_s(:long) %>
     <i class="fa fa-edit"></i> Edit Info
 <% end %>
 
+<div class="wrapper wrapper-content">
+  <%= simple_form_for @event_roster, url: event_rosters_path(event_id: @event.id, status: 'approved'), method: :post do |f| %>
+      <%= f.association :user, label_method: :display_name, value_method: :id %>
+      <%= f.submit 'Add To Roster', class: 'btn btn-success btn-xs' %>
+  <% end %>
+</div>
 
 <div class="wrapper wrapper-content">
   <%= link_to new_event_path, class: 'btn btn-success pull-right' do %>

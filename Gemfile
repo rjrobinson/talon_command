@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
+ruby '2.3.1'
 
-gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
+gem 'rails', '~> 5.0.1'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'dotenv-rails'
@@ -23,7 +24,7 @@ gem 'devise'
 gem 'omniauth-facebook'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'twilio-ruby'
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'pry-rails'
