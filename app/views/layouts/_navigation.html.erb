@@ -42,10 +42,10 @@
               <i class="fa fa-book"></i> <span class="nav-label"> Send Notification</span>
             </a>
           </li>
-          <li>
-            <a href="">
-              <i class="fa fa-cog"></i> <span class="nav-label"> Admin Settings</span>
-            </a>
+          <li class="<%= 'active' if current_page?(users_url) %>">
+            <%= link_to users_path do %>
+                <i class="fa fa-cog"></i> <span class="nav-label"> Admin Settings</span>
+            <% end %>
           </li>
       <% end %>
     </ul>

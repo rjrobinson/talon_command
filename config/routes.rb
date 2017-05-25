@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resource :event_rosters, only: [:create, :destroy, :update]
 
 
-  resources :users, only: [:show, :update]
+  resources :users, only: [:index, :show, :update]
   resources :profiles, only: [:update]
 
 

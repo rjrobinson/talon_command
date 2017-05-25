@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-
+  
   def update
     @profile = Profile.find(params[:id])
     @user = @profile.user

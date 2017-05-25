@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
 
+  before_action :ensure_profile_exists, except: [:index]
+
+  def index
+    @users = User.all
+  end
+
   def show
     @user = User.find(params[:id])
     @profile = Profile.find_by(user_id: params[:id])
@@ -17,11 +23,20 @@ class UsersController < ApplicationController
 
   private
 
+  def ensure_profile_exists
+    user = User.find(params[:id])
+    if user && user.profile.nil?
+      Profile.create(user_id: current_user.id)
+    end
+  end
+
   def user_params
+    params[:admin] = false if params[:admin] == '0'
     params.require(:user).permit(
         :first_name,
         :last_name,
-        :email
+        :email,
+        :admin
     )
   end
 end
