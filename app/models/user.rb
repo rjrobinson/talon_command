@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   has_one :profile
 
+  delegate :phone, to: :profile
+
   def display_name
     return email if first_name.nil?
     first_name + ' ' + last_name

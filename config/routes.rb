@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
 
   resources :users, only: [:show, :update]
+  resources :profiles, only: [:update]
 
-  # get '/home', to: 'home#home', as: :home
 
 end

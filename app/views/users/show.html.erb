@@ -1,6 +1,7 @@
 <div class="row wrapper border-bottom white-bg page-heading">
   <div class="col-lg-10">
-    <h2><%= @profile.user.display_name %></h2>
+    <h2><%= @profile.user.display_name %>
+      <strong><%= number_to_phone(@user.phone, area_code: true) if @user.phone %></strong></h2>
   </div>
 </div>
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -47,7 +48,7 @@
                 <%= f.submit 'Update E-Mail', class: 'btn btn-info' %>
               </div>
           <% end %>
-          <%= simple_form_for :profile do |f| %>
+          <%= simple_form_for @profile do |f| %>
               <legend><i class="fa fa-phone"></i> Phone</legend>
               <div class="form-group"><label class="col-sm-2 control-label">Mobile</label>
                 <div class="col-sm-8">

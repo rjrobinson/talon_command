@@ -22,14 +22,14 @@
         </div>
       </li>
       <% if current_user %>
-          <li class="<%= 'active' if current_page?('/') %>">
+          <li class="<%= 'active' if current_page?(root_url) %>">
             <%= link_to '/' do %>
                 <i class="fa fa-home"></i> <span class="nav-label"> Dashboard</span>
             <% end %>
           </li>
-          <li class="<%= 'active' if current_page?('/home/minor') %>">
-            <%= link_to '/home/minor' do %>
-                <i class="fa fa-modx"></i> <span class="nav-label"> events</span>
+          <li class="<%= 'active' if current_page?(events_url) %>">
+            <%= link_to events_path do %>
+                <i class="fa fa-modx"></i> <span class="nav-label"> Events</span>
             <% end %>
           </li>
           <li>
