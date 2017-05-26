@@ -24,7 +24,9 @@ gem 'devise'
 gem 'omniauth-facebook'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'twilio-ruby'
+
+gem 'twilio-ruby', '~> 4.11.1'
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'pry-rails'

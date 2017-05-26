@@ -1,22 +1,12 @@
 class SMSNotification
-  require 'twilio-ruby'
+  @client ||= Twilio::REST::Client.new
 
 
-  Twilio.configure do |config|
-    config.account_sid = account_sid
-    config.auth_token = auth_token
-  end
-
-  def initialize
-    @client = Twilio::REST::Client.new
-  end
-
-
-  def send_notifcation(notification)
+  def send_notifcation
     @client.messages.create(
-        from: notification.from,
-        to: notification.to,
-        body: notification.body
+        from: '17328448638',
+        to: '19085666628‬',
+        body: 'TALON COMMAND ONLINE'
     )
   end
 end
