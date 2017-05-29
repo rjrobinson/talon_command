@@ -12,8 +12,27 @@ class EventRoster < ApplicationRecord
   scope :pending, -> {where(status: 'pending')}
   scope :denied, -> {where(status: 'denied')}
 
+
+  after_update :notify_user
+
   def approved_by_user
     User.find(approved_by).display_name
+  end
+
+
+  def notify_user
+    @sms = SmsNotification.create(to: "+1#{user.phone}")
+    case status
+      when 'approved'
+        @sms.update(body: "You have been approved for #{event.name} on #{event.start.to_s(:short)}")
+      when 'denied'
+        @sms.update(body: "You have been denied for #{event.name} on #{event.start.to_s(:short)}")
+      else
+        return
+    end
+
+    res = @sms.send_notification
+    @sms.update(response: res)
   end
 
   private

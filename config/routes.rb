@@ -10,7 +10,10 @@ Rails.application.routes.draw do
 
 
   resources :users, only: [:index, :show, :update]
+
+  resources :sms_notifications, only: [:new, :create]
+
   resources :profiles, only: [:update]
 
-
+  get '/home', to: 'home#home', as: :home
 end

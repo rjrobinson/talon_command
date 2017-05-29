@@ -41,7 +41,7 @@ Ending <%= @event.end.to_s(:long) %>
               <td><%= request.user.display_name %></td>
               <td><%= request.status %></td>
               <td class="text-center">
-                <%= button_to 'Deny',
+                <%= button_to 'Revoke',
                               event_rosters_path(event_roster_id: request.id, status: 'denied'),
                               method: :patch,
                               class: 'btn btn-danger btn-xs'

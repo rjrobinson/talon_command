@@ -1,26 +1,22 @@
 class SmsNotification < ApplicationRecord
-#   require 'twilio-ruby'
-#
-#
-#   Twilio.configure do |config|
-#     config.account_sid = account_sid
-#     config.auth_token = auth_token
-#   end
-#
-#   def initialize
-#     @client = Twilio::REST::Client.new
-#   end
-#
-#
-#   def send_notifcation(notification)
-#     @client.messages.create(
-#         from: notification.from,
-#         to: notification.to,
-#         body: notification.body
-#     )
-#   end
-# end
-#
-#
-#
+
+
+  PHONE_NUMBER = '+17328448638'
+
+  @client ||= Twilio::REST::Client.new
+
+
+  def send_to_all
+
+  end
+
+
+  def send_notification
+    @client = Twilio::REST::Client.new
+    @client.messages.create(
+        from: PHONE_NUMBER,
+        to: to,
+        body: body
+    )
+  end
 end

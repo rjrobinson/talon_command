@@ -1,0 +1,24 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>
+      Blast Message
+    </h2>
+  </div>
+</div>
+<div class="middle-box text-center wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <p>This message will be sent to all members who have registered their cell phones. </p>
+          <%= simple_form_for @notification do |f| %>
+              <div class="form-group">
+                <%= f.input :body, as: :text, label: false %>
+                <%= f.submit 'send', class: 'btn btn-success' %>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
